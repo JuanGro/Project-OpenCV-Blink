@@ -5,11 +5,6 @@ from drone_functionality import *
 
 isAlive = False
 
-class UserVision:
-    def __init__(self, vision):
-        self.index = 0
-        self.vision = vision
-
 if __name__ == "__main__":
     # make my bebop object
     bebop = Bebop(drone_type="Bebop2")
@@ -20,7 +15,6 @@ if __name__ == "__main__":
         # start up the video
         bebopVision = DroneVisionGUI(bebop, is_bebop=True, user_code_to_run=drone_functionality,
                                      user_args=(bebop, ))
-        userVision = UserVision(bebopVision)
         bebopVision.open_video()
     else:
         print("Error connecting to bebop. Retry")
