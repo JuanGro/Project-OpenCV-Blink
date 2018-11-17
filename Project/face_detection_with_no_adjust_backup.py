@@ -44,11 +44,6 @@ while(True):
 
             # If detect a blink
             if eyes_count == 1:
-                blink_count_time += 1
-            else:
-                blink_count_time = 0
-
-            if blink_count_time > 3:
                 font = opencv.FONT_HERSHEY_SIMPLEX
                 opencv.putText(video, 'BLINK', (500, 700), font, 4, (255,255,255), 2, opencv.LINE_AA)
 
