@@ -19,6 +19,7 @@ k = cv.waitKey(0)
 # wait for ESC key to exit
 if k == 27:
     cv.destroyAllWindows()
+
 # wait for 's' key to save and exit
 elif k == ord('s'):
     # Save image
