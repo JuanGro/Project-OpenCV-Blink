@@ -1,3 +1,5 @@
+import cv2 as opencv
+
 path_face_xml = './haarcascade_frontalface_default.xml'
 path_eye_xml = './haarcascade_eye.xml'
 
@@ -34,7 +36,7 @@ def is_there_a_blink():
                 eyes = eye_cascade.detectMultiScale(roi_gray)
                 for (ex, ey, ew, eh) in eyes:
                     # This is an adjustment to get only the eyes, not nose
-                    if (ey + ey + eh) / 2 < (y + y + h) / 6:
+                    if (ey + ey + eh) / 2 < (y + y + h) / 4:
                         eyes_number += 1
                 if eyes_number == 1:
                     print("Blink")

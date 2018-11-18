@@ -1,5 +1,4 @@
 import numpy as np
-import cv2 as opencv
 from opencv_operations import *
 from follow import *
 
