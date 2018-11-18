@@ -1,7 +1,7 @@
 import cv2 as opencv
 
-path_face_xml = './haarcascade_frontalface_default.xml'
-path_eye_xml = './haarcascade_eye.xml'
+path_face_xml = './Resources/haarcascade_frontalface_default.xml'
+path_eye_xml = './Resources/haarcascade_eye.xml'
 
 def is_there_a_blink():
     face_cascade = opencv.CascadeClassifier(path_face_xml)
