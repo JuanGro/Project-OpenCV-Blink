@@ -21,14 +21,12 @@ def drone_functionality(bebopVision, args):
     #Actualiza la información de los sensores
     bebop.ask_for_state_update()
     print_drone_status(bebop)
-    #Start
-    print("sleeping")
+    print("Starting drone")
     #Realiza una pausa en el programa
     bebop.smart_sleep(4)
     #Despega el drone
     bebop.safe_takeoff(10)
-    print("flying state is %s" % bebop.sensors.flying_state) #imprime el estado del drone
-
+    
     # Reactive agent
     while(True):
         result = is_there_a_blink()

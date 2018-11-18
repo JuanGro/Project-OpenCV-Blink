@@ -15,7 +15,7 @@ def is_there_a_blink():
                 # For each face
                 for (x, y, w, h) in faces:
                     eyes_number = 0
-                    roi_gray = gray[y:y+h, x:x+w]
+                    roi_gray = gray[y : y + h, x : x + w]
                     eyes = eye_cascade.detectMultiScale(roi_gray)
                     for (ex, ey, ew, eh) in eyes:
                         # This is an adjustment to get only the eyes, not nose
