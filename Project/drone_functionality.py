@@ -1,5 +1,5 @@
 import numpy as np
-from opencv_operations import *
+from opencv_operations_simplified import *
 from follow import *
 
 def print_drone_status(bebop):
@@ -21,7 +21,7 @@ def drone_functionality(bebopVision, args):
     #Actualiza la información de los sensores
     bebop.ask_for_state_update()
     print_drone_status(bebop)
-    # Start
+    #Start
     print("sleeping")
     #Realiza una pausa en el programa
     bebop.smart_sleep(4)
@@ -29,12 +29,16 @@ def drone_functionality(bebopVision, args):
     bebop.safe_takeoff(10)
     print("flying state is %s" % bebop.sensors.flying_state) #imprime el estado del drone
 
+    # Reactive agent
     while(True):
-        if is_there_a_blink():
+        result = is_there_a_blink()
+        if result == 'Blink':
             print("Blink")
+            bebop.smart_sleep(4)
             #break because there is a LAND
-        elif is_there_a_face():
+        elif result == 'Face found':
             print("Should follow the person")
+            bebop.smart_sleep(4)
             #follow(bebop)
         else:
             #Looking for a person
