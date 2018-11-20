@@ -25,19 +25,13 @@ def drone_functionality(bebopVision, args):
     bebop.smart_sleep(4)
     #Despega el drone
     bebop.safe_takeoff(10)
-    bebop.fly_direct(0, 0, 0, 45, 2)
+    bebop.fly_direct(0, 0, 0, 75, 2)
 
     # Reactive agent
     while(True):
-        result = is_there_a_blink()
-        # if result == 'Blink':
-        #     print("Blink")
-        #     bebop.smart_sleep(4)
-        #     #Break because there is a LAND
-        #     break
+        result = is_there_a_face()
         if result == 'Face found':
             print("Face found!")
-            bebop.smart_sleep(4)
             follow(bebop)
         else:
             print("No person found")
