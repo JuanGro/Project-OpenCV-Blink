@@ -19,8 +19,8 @@ def is_there_a_blink():
                     eyes = eye_cascade.detectMultiScale(roi_gray)
                     for (ex, ey, ew, eh) in eyes:
                         # This is an adjustment to get only the eyes, not nose
-                        if (ey + ey + eh) / 2 < (y + y + h) / 4:
-                            eyes_number += 1
+                        # if (ey + ey + eh) / 2 < (y + y + h) / 4:
+                        eyes_number += 1
                     if eyes_number == 0:
                         print("No eyes")
                         return 'Face found'
@@ -39,3 +39,42 @@ def is_there_a_blink():
             return 'No face'
     except:
         return 'No face'
+
+def follow(bebop):
+    face_cascade = opencv.CascadeClassifier(path_face_xml)
+    try:
+        img = opencv.imread(r'/Users/juan/anaconda3/lib/python3.7/site-packages/pyparrot/images/visionStream.jpg')
+        if (img is not None):
+            gray = opencv.cvtColor(img, 0)
+            faces = face_cascade.detectMultiScale(gray, 1.3, 5)
+            for (x, y, w, h) in faces:
+                w_min_size = 60
+                w_max_size = 65
+                print("W: ", w)
+                #Estoy no centrado Izq der
+                if (x + (w / 2)) > (856 / 2 + 40):
+                    bebop.fly_direct(20, 0, 0, 0, 1)
+                    bebop.ask_for_state_update()
+                    bebop.smart_sleep(1)
+                    print("der")
+                elif (x + (w / 2)) < (856 / 2 - 40):
+                    bebop.fly_direct(-20, 0, 0, 0, 1)
+                    bebop.ask_for_state_update()
+                    bebop.smart_sleep(1)
+                    print("izq")
+                #Estoy lejos
+                if w < w_min_size:
+                    bebop.fly_direct(0, 30, 0, 0, 1)
+                    bebop.ask_for_state_update()
+                    bebop.smart_sleep(1)
+                    print("acercarse")
+                elif w > w_max_size:
+                    bebop.fly_direct(0, -30, 0, 0, 1)
+                    bebop.ask_for_state_update()
+                    bebop.smart_sleep(1)
+                    print("alejarse")
+                else:
+                    bebop.smart_sleep(1)
+                    print("Quieto")
+    except:
+        print("Leon se equivocó")
