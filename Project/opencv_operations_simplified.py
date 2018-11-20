@@ -21,7 +21,10 @@ def is_there_a_blink():
                         # This is an adjustment to get only the eyes, not nose
                         if (ey + ey + eh) / 2 < (y + y + h) / 4:
                             eyes_number += 1
-                    if eyes_number == 1:
+                    if eyes_number == 0:
+                        print("No eyes")
+                        return 'Face found'
+                    elif eyes_number == 1:
                         print("Blink")
                         return 'Blink'
                     elif eyes_number == 2:
