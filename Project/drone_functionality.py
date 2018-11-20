@@ -25,6 +25,7 @@ def drone_functionality(bebopVision, args):
     bebop.smart_sleep(4)
     #Despega el drone
     bebop.safe_takeoff(10)
+    bebop.fly_direct(0, 0, 0, 35, 2)
 
     # Reactive agent
     while(True):
