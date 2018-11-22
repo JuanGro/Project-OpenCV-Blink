@@ -15,7 +15,7 @@ for (x, y, w, h) in faces:
 
     # For each eye
     for (ex, ey, ew, eh) in eyes:
-        if (ey + ey + eh) / 2 < (y + y + h) / 6:
+        if (ey + ey + eh) / 2 < (y + y + h) / 4:
             # Draw a green rectangle
             opencv.rectangle(roi_color, (ex, ey), (ex + ew, ey + eh), (0, 255, 0), 2)
             font = opencv.FONT_HERSHEY_SIMPLEX
