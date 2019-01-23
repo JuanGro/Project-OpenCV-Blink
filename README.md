@@ -1,6 +1,6 @@
 # Dron con reconocimiento facial
 
-![Ver Reporte](Report/Report.pdf?raw=true "Reporte")
+![Ver Reporte](Report.pdf?raw=true "Reporte")
 
 Demo:
 
